@@ -1,0 +1,12 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Gerenciador",
+            "request": "launch",
+            "mainClass": "Gerenciador",
+            "projectName": "gerenciador-notas_5564fd5c",
+            "console": "externalTerminal",
+        }
+    ]
+}

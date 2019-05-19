@@ -1,3 +1,8 @@
+
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Scanner;
+
 class Turma {
     private ArrayList<Aluno> alunos;
 
@@ -22,7 +27,7 @@ class Turma {
             String linha;
             String[] dados;
 
-            //Percorre as linhas enquanto houver texto
+            // Percorre as linhas enquanto houver texto
             while ((linha = reader.readLine()) != null) {
                 dados = linha.split("\\|");
                 ra = dados[0];
@@ -32,6 +37,7 @@ class Turma {
                 n3 = Double.parseDouble(dados[4]);
                 alunos.add(new Aluno(ra, nome, n1, n2, n3));
             }
+            reader.close();
         } catch (IOException e) {
             e.printStackTrace();
         } catch (IllegalArgumentException e) {
@@ -62,7 +68,7 @@ class Turma {
                 file.createNewFile();
             }
 
-            //Instanciamos a escrita do arquivo
+            // Instanciamos a escrita do arquivo
             FileWriter writer = new FileWriter(file.getAbsoluteFile());
             BufferedWriter bw = new BufferedWriter(writer);
 
@@ -89,22 +95,21 @@ class Turma {
                 op = scanner.nextLine().charAt(0);
             } catch (Exception e) {
                 op = ' ';
-            }
-            switch (op) {
-                case 'S':
-                case 's':
-                    inserirAluno();
-                    return true;
-                case 'N':
-                case 'n':
-                    return false;
-                default:
-                    System.out.println("Opção inválida.");
+            } switch (op) {
+            case 'S':
+            case 's':
+                inserirAluno();
+                return true;
+            case 'N':
+            case 'n':
+                return false;
+            default:
+                System.out.println("Opção inválida.");
             }
         }
     }
 
-    private void inserirAluno(){
+    private void inserirAluno() {
         Aluno aluno;
         String ra;
         String nome;
@@ -127,6 +132,7 @@ class Turma {
             alunos.add(aluno);
             salvarDados();
         } catch (Exception e) {
+            scanner.nextLine();
             System.out.println("Dados incorretos.");
         }
     }
