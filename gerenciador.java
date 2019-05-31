@@ -1,11 +1,8 @@
 class Gerenciador {
     public static void main(String[] args) {
-        Turma turma = new Turma();
-        boolean continua;
+       InterfaceAluno interfaceAluno = new InterfaceAluno();
 
-        turma.mostrarDados();
-        do {
-            continua = turma.modificarAlunos();// Modificar para inserir/excluir
-        } while (continua);
+       interfaceAluno.inicializa();
+
     }
 }

@@ -5,8 +5,14 @@
             "name": "CodeLens (Launch) - Gerenciador",
             "request": "launch",
             "mainClass": "Gerenciador",
-            "projectName": "gerenciador-notas_5564fd5c",
-            "console": "externalTerminal",
+            "projectName": "gerenciador-notas_5edbd5ae"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - TesteInterface",
+            "request": "launch",
+            "mainClass": "TesteInterface",
+            "projectName": "gerenciador-notas_5edbd5ae"
         }
     ]
 }
