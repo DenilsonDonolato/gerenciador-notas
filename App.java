@@ -68,7 +68,7 @@ public class App extends JFrame {
                 break;
 
             case 2:
-                InterfaceAluno interfaceAluno = new InterfaceAluno();
+                InterfaceAluno interfaceAluno = new InterfaceAluno((Aluno) usuario);
                 interfaceAluno.inicializa();
                 break;
 

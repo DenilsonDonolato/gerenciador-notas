@@ -6,8 +6,9 @@ public class InterfaceAluno extends JFrame {
     private static final String appName = "Gerenciador de notas";
     private static final int larguraJanela = 400;
     private static final int alturaJanela = 450;
+    Aluno aluno;
 
-    InterfaceAluno() {
+    InterfaceAluno(Aluno aluno) {
         setLayout(null);
         setTitle(appName);
         setSize(larguraJanela, alturaJanela);
@@ -15,6 +16,8 @@ public class InterfaceAluno extends JFrame {
         setLocation(260, 115);
         setResizable(false);
         setLocationRelativeTo(null);
+
+        this.aluno = aluno;
 
         criaComponentes();
     }
@@ -24,7 +27,7 @@ public class InterfaceAluno extends JFrame {
         lblUsuario.setBounds(larguraJanela/2-90, 20 ,200,30);
         add(lblUsuario);
         
-        JLabel txtUsuario = new JLabel(" Nome do aluno aqui.");
+        JLabel txtUsuario = new JLabel(aluno.nome);
         txtUsuario.setBounds(larguraJanela/2-50, 20, 200, 30);
         add(txtUsuario);
 
