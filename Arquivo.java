@@ -45,7 +45,7 @@ public class Arquivo {
         String nome, login, password, tipo;
 
         try {
-            FileReader ler = new FileReader(user);
+            FileReader ler = new FileReader(usuarios);
             BufferedReader reader = new BufferedReader(ler);
 
             String linha;
@@ -57,19 +57,19 @@ public class Arquivo {
                 login = dados[1];
                 password = dados[2];
                 tipo = dados[3];
-                if(nome.equals(user)){
-                    if(password.equals(senha)){
+                if (login.equals(user)) {
+                    if (password.equals(senha)) {
                         switch (tipo.charAt(0)) {
-                            case 'A':
-                                return new Aluno(nome);
-                                break;
-                        
-                            default:
-                                break;
+                        case 'A':
+                            return new Aluno(nome);
+                        case 'P':
+                            // return new Professor(nome);
+                        case 'C':
+                            // return new Coordenador(nome);
                         }
                     }
                 }
-                
+
             }
             reader.close();
             return 0;

@@ -11,7 +11,7 @@ public class InterfaceAluno extends JFrame {
         setLayout(null);
         setTitle(appName);
         setSize(larguraJanela, alturaJanela);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setLocation(260, 115);
         setResizable(false);
         setLocationRelativeTo(null);

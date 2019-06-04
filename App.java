@@ -59,8 +59,8 @@ public class App extends JFrame {
     protected void logar() {
         Arquivo arquivo = new Arquivo();
         try {
-            Object usuario = arquivo.validarLogin(txtUsuario.getText(),String.valueOf(txtSenha.getPassword()));
-            
+            Object usuario = arquivo.validarLogin(txtUsuario.getText(), String.valueOf(txtSenha.getPassword()));
+
             switch (checarTipoUsuario(usuario)) {
             case 1:
                 // setVisible(false);
@@ -71,9 +71,7 @@ public class App extends JFrame {
 
             case 2:
                 InterfaceAluno interfaceAluno = new InterfaceAluno();
-                setVisible(false);
                 interfaceAluno.inicializa();
-                setVisible(true);
                 break;
 
             case 3:
@@ -89,6 +87,19 @@ public class App extends JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Não foi possível realizar o Login", appName,
                     JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private int checarTipoUsuario(Object usuario) {
+        String tipo = usuario.getClass().toString();
+        if (tipo.contains("Aluno")) {
+            return 2;
+        } else if (tipo.contains("Professor")) {
+            return 3;
+        } else if (tipo.contains("Coordenador")) {
+            return 1;
+        } else {
+            return 0;
         }
     }
 
