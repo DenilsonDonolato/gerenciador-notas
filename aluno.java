@@ -16,6 +16,9 @@ class Aluno {
             this.conceito = calcularConceito(calcularMedia());
         }
     }
+    Aluno(String nome){
+        this.nome = nome;
+    }
 
     private boolean validaNota(double nota) {
         return nota >= 0 && nota <= 10;

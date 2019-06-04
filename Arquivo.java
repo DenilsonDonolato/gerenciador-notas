@@ -41,7 +41,7 @@ public class Arquivo {
         return file.exists();
     }
 
-    int validarLogin(String user, String senha) {
+    Object validarLogin(String user, String senha) {
         String nome, login, password, tipo;
 
         try {
@@ -57,7 +57,18 @@ public class Arquivo {
                 login = dados[1];
                 password = dados[2];
                 tipo = dados[3];
-
+                if(nome.equals(user)){
+                    if(password.equals(senha)){
+                        switch (tipo.charAt(0)) {
+                            case 'A':
+                                return new Aluno(nome);
+                                break;
+                        
+                            default:
+                                break;
+                        }
+                    }
+                }
                 
             }
             reader.close();
