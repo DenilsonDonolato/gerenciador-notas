@@ -1,8 +1,8 @@
 class Gerenciador {
     public static void main(String[] args) {
-       InterfaceAluno interfaceAluno = new InterfaceAluno();
+       App app = new App();
 
-       interfaceAluno.inicializa();
+       app.inicializa();
 
     }
 }

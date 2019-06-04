@@ -4,7 +4,7 @@ public class InterfaceAluno extends JFrame {
 
     private static final long serialVersionUID = 1L;
     private static final String appName = "Gerenciador de notas";
-    private static final int larguraJanela = 800;
+    private static final int larguraJanela = 400;
     private static final int alturaJanela = 450;
 
     InterfaceAluno() {
@@ -20,17 +20,16 @@ public class InterfaceAluno extends JFrame {
     }
 
     private void criaComponentes() {
-        int a = 70;
         JLabel lblUsuario = new JLabel("Aluno: ");
-        lblUsuario.setBounds(larguraJanela/2-200+a, 20 ,200,30);
+        lblUsuario.setBounds(larguraJanela/2-90, 20 ,200,30);
         add(lblUsuario);
         
         JLabel txtUsuario = new JLabel(" Nome do aluno aqui.");
-        txtUsuario.setBounds(larguraJanela/2-a, 20, 200, 30);
+        txtUsuario.setBounds(larguraJanela/2-50, 20, 200, 30);
         add(txtUsuario);
 
         JComboBox<String> cmbMaterias = new JComboBox<>();
-        cmbMaterias.setBounds(larguraJanela/2-100, 50 ,200,30);
+        cmbMaterias.setBounds(larguraJanela/2-100, 70 ,200,30);
         add(cmbMaterias);
         cmbMaterias.setToolTipText("Selecione a Disciplina:");
         cmbMaterias.setEditable(true);
@@ -40,37 +39,33 @@ public class InterfaceAluno extends JFrame {
         cmbMaterias.addItem("Cálculo");
         cmbMaterias.addItem("Java");
         cmbMaterias.addItem("Hardware");
-
-        JLabel lblDisciplina = new JLabel("Disiciplina");
-        lblDisciplina.setBounds(100, 150, 200, 30);
-        add(lblDisciplina);
         
         JLabel lblFalta = new JLabel("Faltas:");
-        lblFalta.setBounds(200, 150, 200, 30);
+        lblFalta.setBounds(165, 150, 200, 30);
         add(lblFalta);
         JLabel lblNumFaltas = new JLabel("9");
-        lblNumFaltas.setBounds(250, 150, 200, 30);
+        lblNumFaltas.setBounds(220, 150, 200, 30);
         add(lblNumFaltas);
 
         JLabel lblNota1 = new JLabel("P1:");
-        lblNota1.setBounds(200, 200, 200, 30);
+        lblNota1.setBounds(165, 200, 200, 30);
         add(lblNota1);
         JLabel lblValorNotaP1 = new JLabel("9");
         lblValorNotaP1.setBounds(220, 200, 200, 30);
         add(lblValorNotaP1);
 
         JLabel lblNota2 = new JLabel("P2:");
-        lblNota2.setBounds(250, 200, 200, 30);
+        lblNota2.setBounds(165, 250, 200, 30);
         add(lblNota2);
         JLabel lblValorNotaP2 = new JLabel("9");
-        lblValorNotaP2.setBounds(270, 200, 200, 30);
+        lblValorNotaP2.setBounds(220, 250, 200, 30);
         add(lblValorNotaP2);
 
         JLabel lblMedia = new JLabel("Média:");
-        lblMedia.setBounds(230, 250, 200, 30);
+        lblMedia.setBounds(165, 300, 200, 30);
         add(lblMedia);
         JLabel lblNotaMedia = new JLabel("9");
-        lblNotaMedia.setBounds(270, 250, 200, 30);
+        lblNotaMedia.setBounds(220, 300, 200, 30);
         add(lblNotaMedia);
         
 
