@@ -63,10 +63,8 @@ public class App extends JFrame {
 
             switch (checarTipoUsuario(usuario)) {
             case 1:
-                // setVisible(false);
                 // InterfaceCoordenador interfaceCoordenador = new InterfaceCoordenador();
                 // interfaceCoordenador.inicializa();
-                // setVisible(true);
                 break;
 
             case 2:
@@ -75,10 +73,8 @@ public class App extends JFrame {
                 break;
 
             case 3:
-                // InterfaceProfessor interfaceProfessor = new InterfaceProfessor();
-                // setVisible(false);
-                // interfaceProfessor.inicializa();
-                // setVisible(true);
+                InterfaceProfessor interfaceProfessor = new InterfaceProfessor();
+                interfaceProfessor.inicializa();
                 break;
             default:
                 JOptionPane.showMessageDialog(this, "Usuário ou senha inválidos", appName, JOptionPane.WARNING_MESSAGE);
@@ -92,6 +88,7 @@ public class App extends JFrame {
 
     private int checarTipoUsuario(Object usuario) {
         String tipo = usuario.getClass().toString();
+        System.out.println(tipo);
         if (tipo.contains("Aluno")) {
             return 2;
         } else if (tipo.contains("Professor")) {
