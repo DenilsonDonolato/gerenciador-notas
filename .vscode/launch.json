@@ -4,6 +4,12 @@
             "type": "java",
             "name": "CodeLens (Launch) - Gerenciador",
             "request": "launch",
+            "mainClass": "Gerenciador"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Gerenciador",
+            "request": "launch",
             "mainClass": "Gerenciador",
             "projectName": "gerenciador-notas_5edbd5ae"
         },
