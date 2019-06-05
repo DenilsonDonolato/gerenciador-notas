@@ -1,7 +1,5 @@
 import javax.swing.*;
 
-import sun.jvm.hotspot.types.JIntField;
-
 public class InterfaceProfessor extends JFrame {
 
     private static final long serialVersionUID = 2L;
