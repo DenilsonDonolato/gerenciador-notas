@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class Arquivo {
 
@@ -43,6 +44,7 @@ public class Arquivo {
 
     Object validarLogin(String user, String senha) {
         String nome, login, password, tipo;
+        ArrayList<String> materias = new ArrayList<>();
 
         try {
             FileReader ler = new FileReader(usuarios);
@@ -53,15 +55,18 @@ public class Arquivo {
 
             while ((linha = reader.readLine()) != null) {
                 dados = linha.split("\\|");
-                nome = dados[0];
                 login = dados[1];
                 password = dados[2];
-                tipo = dados[3];
                 if (login.equals(user)) {
                     if (password.equals(senha)) {
+                        nome = dados[0];
+                        tipo = dados[3];
+                        for (int i = 4; i < dados.length; i++) {
+                            materias.add(dados[i]);
+                        }
                         switch (tipo.charAt(0)) {
                         case 'A':
-                            return new Aluno(nome);
+                            return new Aluno(nome, materias);
                         case 'P':
                             return new Professor(nome);
                         case 'C':

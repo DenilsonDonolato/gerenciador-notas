@@ -1,8 +1,11 @@
+import java.util.ArrayList;
+
 class Aluno {
     String ra;
     String nome;
     double[] notas = new double[3];
     private String conceito;
+    ArrayList<String> materias = new ArrayList<>();
 
     Aluno(String ra, String nome, double n1, double n2, double n3) {
         if (ra.length() != 4 || nome.length() > 30 || !validaNota(n1) || !validaNota(n2) || !validaNota(n3)) {
@@ -16,8 +19,9 @@ class Aluno {
             this.conceito = calcularConceito(calcularMedia());
         }
     }
-    Aluno(String nome){
+    Aluno(String nome, ArrayList<String> materias){
         this.nome = nome;
+        this.materias = materias;
     }
 
     private boolean validaNota(double nota) {

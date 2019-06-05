@@ -38,10 +38,9 @@ public class InterfaceAluno extends JFrame {
         cmbMaterias.setEditable(true);
         cmbMaterias.setSelectedItem("Selecione a disciplina:");
         cmbMaterias.setEditable(false);
-        cmbMaterias.addItem("Matemática Discreta");
-        cmbMaterias.addItem("Cálculo");
-        cmbMaterias.addItem("Java");
-        cmbMaterias.addItem("Hardware");
+        for (String materia : aluno.materias) {
+            cmbMaterias.addItem(materia);
+        }
         
         JLabel lblFalta = new JLabel("Faltas:");
         lblFalta.setBounds(165, 150, 200, 30);

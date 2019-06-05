@@ -1,4 +1,4 @@
-public class Professor {
+class Professor {
 
     String nome;
 
