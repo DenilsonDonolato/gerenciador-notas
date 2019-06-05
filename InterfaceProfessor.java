@@ -44,35 +44,64 @@ public class InterfaceProfessor extends JFrame {
         add(lblTittle5);
 
         //Primeiro Aluno
-        JLabel txtUsuario = new JLabel(" Nome do aluno aqui.");
-        txtUsuario.setBounds(larguraJanela/2-230, 50, 200, 30);
-        add(txtUsuario);
+        JLabel txtUsuario1 = new JLabel(" Nome do aluno aqui.");
+        txtUsuario1.setBounds(larguraJanela/2-230, 50, 200, 30);
+        add(txtUsuario1);
 
-        JButton btnMenos = new JButton("-");
-        btnMenos.setBounds(larguraJanela/2-43, 55, 15, 15);
-        add(btnMenos);    
+        JButton btnMenos1 = new JButton("-");
+        btnMenos1.setBounds(larguraJanela/2-43, 55, 15, 15);
+        add(btnMenos1);    
         
-        JLabel lblNumFaltas = new JLabel("9");
-        lblNumFaltas.setBounds(larguraJanela/2-23, 55, 15, 15);
-        add(lblNumFaltas);
+        JLabel lblNumFaltas1 = new JLabel("9");
+        lblNumFaltas1.setBounds(larguraJanela/2-23, 55, 15, 15);
+        add(lblNumFaltas1);
 
-        JButton btnMais = new JButton("+");
-        btnMais.setBounds(larguraJanela/2-13, 55, 15, 15);
-        add(btnMais); 
+        JButton btnMais1 = new JButton("+");
+        btnMais1.setBounds(larguraJanela/2-13, 55, 15, 15);
+        add(btnMais1); 
 
-        JTextField notaP1 = new JTextField("9");
-        notaP1.setBounds(295, 55, 20, 20);
-        add(notaP1);
+        JTextField notaP11 = new JTextField("9");
+        notaP11.setBounds(295, 55, 20, 20);
+        add(notaP11);
 
-        JTextField notaP2 = new JTextField("9");
-        notaP2.setBounds(350, 55, 20, 20);
-        add(notaP2);
+        JTextField notaP21 = new JTextField("9");
+        notaP21.setBounds(350, 55, 20, 20);
+        add(notaP21);
         
-        JLabel lblNotaMedia = new JLabel("9");
-        lblNotaMedia.setBounds(415, 50, 200, 30);
-        add(lblNotaMedia);
+        JLabel lblNotaMedia1 = new JLabel("9");
+        lblNotaMedia1.setBounds(415, 50, 200, 30);
+        add(lblNotaMedia1);
         //Fim Aluno1
         
+        //Aluno 2
+        JLabel txtUsuario2 = new JLabel("Nome Do segundo Aluno");
+        txtUsuario2.setBounds(larguraJanela/2-230, 70, 200, 30);
+        add(txtUsuario2);
+
+        JButton btnMenos2 = new JButton("-");
+        btnMenos2.setBounds(larguraJanela/2-43, 75, 15, 15);
+        add(btnMenos2);    
+        
+        JLabel lblNumFaltas2 = new JLabel("9");
+        lblNumFaltas2.setBounds(larguraJanela/2-23, 75, 15, 15);
+        add(lblNumFaltas2);
+
+        JButton btnMais2 = new JButton("+");
+        btnMais2.setBounds(larguraJanela/2-13, 75, 15, 15);
+        add(btnMais2); 
+
+        JTextField notaP12 = new JTextField("9");
+        notaP12.setBounds(295, 75, 20, 20);
+        add(notaP12);
+
+        JTextField notaP22 = new JTextField("9");
+        notaP22.setBounds(350, 75, 20, 20);
+        add(notaP22);
+        
+        JLabel lblNotaMedia2 = new JLabel("9");
+        lblNotaMedia2.setBounds(415, 70, 200, 30);
+        add(lblNotaMedia2);
+        //Fim aluno 2
 
         JButton btnLogar = new JButton("Sair");
         btnLogar.setBounds(larguraJanela/2-100, alturaJanela-100, 200 , 50);
