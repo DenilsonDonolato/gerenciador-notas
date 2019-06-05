@@ -56,8 +56,8 @@ public class InterfaceAluno extends JFrame {
         for (String materia : aluno.materias) {
             cmbMaterias.addItem(materia);
         }
-        cmbMaterias.addActionListener(new ActionListener(){
-        
+        cmbMaterias.addActionListener(new ActionListener() {
+
             @Override
             public void actionPerformed(ActionEvent e) {
                 mudarValores(cmbMaterias.getSelectedItem().toString());
@@ -86,6 +86,13 @@ public class InterfaceAluno extends JFrame {
 
         btnSair.setBounds(larguraJanela / 2 - 100, alturaJanela - 100, 200, 50);
         add(btnSair);
+        btnSair.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                sair();
+            }
+        });
 
         this.addWindowListener(new WindowListener() {
 
@@ -116,9 +123,7 @@ public class InterfaceAluno extends JFrame {
 
             @Override
             public void windowClosed(WindowEvent e) {
-                App app = new App();
-                app.inicializa();
-                dispose();
+                sair();
             }
 
             @Override
@@ -128,11 +133,17 @@ public class InterfaceAluno extends JFrame {
         });
     }
 
+    protected void sair() {
+        App app = new App();
+        app.inicializa();
+        dispose();
+    }
+
     protected void mudarValores(String selectedItem) {
         Arquivo arquivo = new Arquivo();
         String nomeArquivo = arquivo.buscarMateria(selectedItem);
 
-        aluno = arquivo.buscarDadosAluno(nomeArquivo,aluno);
+        aluno = arquivo.buscarDadosAluno(nomeArquivo, aluno);
         lblNumFaltas.setText(String.valueOf(aluno.faltas));
         lblValorNotaP1.setText(String.valueOf(aluno.notas[0]));
         lblValorNotaP2.setText(String.valueOf(aluno.notas[1]));
@@ -143,7 +154,5 @@ public class InterfaceAluno extends JFrame {
     public void inicializa() {
         setVisible(true);
     }
-
-
 
 }
