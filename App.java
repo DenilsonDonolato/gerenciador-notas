@@ -20,6 +20,7 @@ public class App extends JFrame {
         setTitle(appName);
         setSize(larguraJanela, alturaJanela);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+        getRootPane().setDefaultButton(btnLogar);
         setLocation(260, 115);
         setResizable(false);
         setLocationRelativeTo(null);
@@ -64,17 +65,20 @@ public class App extends JFrame {
             switch (checarTipoUsuario(usuario)) {
             case 1:
                 // InterfaceCoordenador interfaceCoordenador = new InterfaceCoordenador();
+                dispose();
                 // interfaceCoordenador.inicializa();
                 break;
 
             case 2:
                 InterfaceAluno interfaceAluno = new InterfaceAluno((Aluno) usuario);
                 interfaceAluno.inicializa();
+                dispose();
                 break;
 
             case 3:
                 InterfaceProfessor interfaceProfessor = new InterfaceProfessor();
                 interfaceProfessor.inicializa();
+                dispose();
                 break;
             default:
                 JOptionPane.showMessageDialog(this, "Usuário ou senha inválidos", appName, JOptionPane.WARNING_MESSAGE);
@@ -83,12 +87,12 @@ public class App extends JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Não foi possível realizar o Login", appName,
                     JOptionPane.ERROR_MESSAGE);
+                e.printStackTrace();
         }
     }
 
     private int checarTipoUsuario(Object usuario) {
         String tipo = usuario.getClass().toString();
-        System.out.println(tipo);
         if (tipo.contains("Aluno")) {
             return 2;
         } else if (tipo.contains("Professor")) {

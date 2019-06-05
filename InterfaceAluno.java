@@ -1,3 +1,6 @@
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
+
 import javax.swing.*;
 
 public class InterfaceAluno extends JFrame {
@@ -7,6 +10,18 @@ public class InterfaceAluno extends JFrame {
     private static final int larguraJanela = 400;
     private static final int alturaJanela = 450;
     Aluno aluno;
+    JLabel lblUsuario = new JLabel("Aluno: ");
+    JLabel txtUsuario;
+    JComboBox<String> cmbMaterias = new JComboBox<>();
+    JLabel lblFalta = new JLabel("Faltas:");
+    JLabel lblNumFaltas = new JLabel("-");
+    JLabel lblNota1 = new JLabel("P1:");
+    JLabel lblValorNotaP1 = new JLabel("-");
+    JLabel lblNota2 = new JLabel("P2:");
+    JLabel lblValorNotaP2 = new JLabel("-");
+    JLabel lblMedia = new JLabel("Média:");
+    JLabel lblNotaMedia = new JLabel("-");
+    JButton btnSair = new JButton("Sair");
 
     InterfaceAluno(Aluno aluno) {
         setLayout(null);
@@ -23,16 +38,14 @@ public class InterfaceAluno extends JFrame {
     }
 
     private void criaComponentes() {
-        JLabel lblUsuario = new JLabel("Aluno: ");
-        lblUsuario.setBounds(larguraJanela/2-90, 20 ,200,30);
+        lblUsuario.setBounds(larguraJanela / 2 - 90, 20, 200, 30);
         add(lblUsuario);
-        
-        JLabel txtUsuario = new JLabel(aluno.nome);
-        txtUsuario.setBounds(larguraJanela/2-50, 20, 200, 30);
+
+        txtUsuario = new JLabel(aluno.nome);
+        txtUsuario.setBounds(larguraJanela / 2 - 50, 20, 200, 30);
         add(txtUsuario);
 
-        JComboBox<String> cmbMaterias = new JComboBox<>();
-        cmbMaterias.setBounds(larguraJanela/2-100, 70 ,200,30);
+        cmbMaterias.setBounds(larguraJanela / 2 - 100, 70, 200, 30);
         add(cmbMaterias);
         cmbMaterias.setToolTipText("Selecione a Disciplina:");
         cmbMaterias.setEditable(true);
@@ -41,40 +54,69 @@ public class InterfaceAluno extends JFrame {
         for (String materia : aluno.materias) {
             cmbMaterias.addItem(materia);
         }
-        
-        JLabel lblFalta = new JLabel("Faltas:");
+
         lblFalta.setBounds(165, 150, 200, 30);
         add(lblFalta);
-        JLabel lblNumFaltas = new JLabel("9");
         lblNumFaltas.setBounds(220, 150, 200, 30);
         add(lblNumFaltas);
 
-        JLabel lblNota1 = new JLabel("P1:");
         lblNota1.setBounds(165, 200, 200, 30);
         add(lblNota1);
-        JLabel lblValorNotaP1 = new JLabel("9");
         lblValorNotaP1.setBounds(220, 200, 200, 30);
         add(lblValorNotaP1);
 
-        JLabel lblNota2 = new JLabel("P2:");
         lblNota2.setBounds(165, 250, 200, 30);
         add(lblNota2);
-        JLabel lblValorNotaP2 = new JLabel("9");
         lblValorNotaP2.setBounds(220, 250, 200, 30);
         add(lblValorNotaP2);
 
-        JLabel lblMedia = new JLabel("Média:");
         lblMedia.setBounds(165, 300, 200, 30);
         add(lblMedia);
-        JLabel lblNotaMedia = new JLabel("9");
         lblNotaMedia.setBounds(220, 300, 200, 30);
         add(lblNotaMedia);
-        
 
-        JButton btnLogar = new JButton("Sair");
-        btnLogar.setBounds(larguraJanela/2-100, alturaJanela-100, 200 , 50);
-        add(btnLogar);
+        btnSair.setBounds(larguraJanela / 2 - 100, alturaJanela - 100, 200, 50);
+        add(btnSair);
 
+        this.addWindowListener(new WindowListener() {
+
+            @Override
+            public void windowOpened(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowIconified(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowDeiconified(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowDeactivated(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowClosing(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowClosed(WindowEvent e) {
+                App app = new App();
+                app.inicializa();
+                dispose();
+            }
+
+            @Override
+            public void windowActivated(WindowEvent e) {
+
+            }
+        });
     }
 
     public void inicializa() {
