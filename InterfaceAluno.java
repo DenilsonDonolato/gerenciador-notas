@@ -1,3 +1,5 @@
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
@@ -54,6 +56,13 @@ public class InterfaceAluno extends JFrame {
         for (String materia : aluno.materias) {
             cmbMaterias.addItem(materia);
         }
+        cmbMaterias.addActionListener(new ActionListener(){
+        
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mudarValores(cmbMaterias.getSelectedItem().toString());
+            }
+        });
 
         lblFalta.setBounds(165, 150, 200, 30);
         add(lblFalta);
@@ -119,8 +128,22 @@ public class InterfaceAluno extends JFrame {
         });
     }
 
+    protected void mudarValores(String selectedItem) {
+        Arquivo arquivo = new Arquivo();
+        String nomeArquivo = arquivo.buscarMateria(selectedItem);
+
+        aluno = arquivo.buscarDadosAluno(nomeArquivo,aluno);
+        lblNumFaltas.setText(String.valueOf(aluno.faltas));
+        lblValorNotaP1.setText(String.valueOf(aluno.notas[0]));
+        lblValorNotaP2.setText(String.valueOf(aluno.notas[1]));
+        lblNotaMedia.setText(String.valueOf(aluno.notas[2]));
+
+    }
+
     public void inicializa() {
         setVisible(true);
     }
+
+
 
 }
