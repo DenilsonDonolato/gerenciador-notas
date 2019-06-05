@@ -45,7 +45,7 @@ public class InterfaceProfessor extends JFrame {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                // mudarValores(cmbMaterias.getSelectedItem().toString());
+                //buscarAlunos(cmbMaterias.getSelectedItem().toString());
             }
         });
 
@@ -70,7 +70,11 @@ public class InterfaceProfessor extends JFrame {
         lblTittle5.setBounds(400, 50, 200, 30);
         add(lblTittle5);
 
-        criaLinhaAluno();
+        criaLinhaAluno(0);
+        criaLinhaAluno(1);
+        criaLinhaAluno(2);
+        criaLinhaAluno(3);
+        criaLinhaAluno(4);
 
         JButton btnSalvar = new JButton("Salvar");
         btnSalvar.setBounds(larguraJanela / 2 - 100, alturaJanela - 100, 100, 50);
@@ -141,35 +145,36 @@ public class InterfaceProfessor extends JFrame {
         setVisible(true);
     }
 
-    void criaLinhaAluno() {
+    void criaLinhaAluno(int linha) {
+        int espaço = linha*28;
         JLabel txtUsuario1 = new JLabel("Nome do aluno aqui.");
-        txtUsuario1.setBounds(35, 85, 200, 20);
+        txtUsuario1.setBounds(35, 85+espaço, 200, 20);
         add(txtUsuario1);
 
         JButton btnMenos1 = new JButton("-");
-        btnMenos1.setBounds(larguraJanela / 2 - 45, 87, 15, 15);
+        btnMenos1.setBounds(larguraJanela / 2 - 45, 87+espaço, 15, 15);
         add(btnMenos1);
         btnMenos1.setToolTipText("Diminuir 1 falta");
 
         JLabel lblNumFaltas1 = new JLabel("9");
-        lblNumFaltas1.setBounds(larguraJanela / 2 - 23, 85, 15, 20);
+        lblNumFaltas1.setBounds(larguraJanela / 2 - 23, 85+espaço, 15, 20);
         add(lblNumFaltas1);
 
         JButton btnMais1 = new JButton("+");
-        btnMais1.setBounds(larguraJanela / 2 - 10, 87, 15, 15);
+        btnMais1.setBounds(larguraJanela / 2 - 10, 87+espaço, 15, 15);
         add(btnMais1);
         btnMais1.setToolTipText("Aumentar 1 falta");
 
         JTextField notaP11 = new JTextField("9");
-        notaP11.setBounds(295, 85, 20, 20);
+        notaP11.setBounds(295, 85+espaço, 20, 20);
         add(notaP11);
 
         JTextField notaP21 = new JTextField("9");
-        notaP21.setBounds(350, 85, 20, 20);
+        notaP21.setBounds(350, 85+espaço, 20, 20);
         add(notaP21);
 
         JLabel lblNotaMedia1 = new JLabel("9");
-        lblNotaMedia1.setBounds(415, 85, 200, 20);
+        lblNotaMedia1.setBounds(415, 85+espaço, 200, 20);
         add(lblNotaMedia1);
     }
 
