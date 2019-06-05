@@ -114,7 +114,7 @@ public class App extends JFrame {
             String user = JOptionPane.showInputDialog(this, "Digite o Login", appName, JOptionPane.DEFAULT_OPTION);
             String senha = JOptionPane.showInputDialog(this, "Digite a Senha", appName, JOptionPane.DEFAULT_OPTION);
             String[] coord = { nome, user, senha, "C" };
-            arquivo.escreverArquivo(Arquivo.usuarios, coord);
+            arquivo.escreverArquivo(Arquivo.usuarios, coord, true);
         }
         ;
 

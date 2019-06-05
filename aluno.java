@@ -3,6 +3,7 @@ import java.util.ArrayList;
 class Aluno {
     String ra;
     String nome;
+    int faltas;
     double[] notas = new double[3];
     private String conceito;
     ArrayList<String> materias = new ArrayList<>();
@@ -19,7 +20,8 @@ class Aluno {
             this.conceito = calcularConceito(calcularMedia());
         }
     }
-    Aluno(String nome, ArrayList<String> materias){
+
+    Aluno(String nome, ArrayList<String> materias) {
         this.nome = nome;
         this.materias = materias;
     }
@@ -28,12 +30,12 @@ class Aluno {
         return nota >= 0 && nota <= 10;
     }
 
-     private double calcularMedia() {
+    double calcularMedia() {
         double media = 0;
-        for (double nota : notas) {
-            media += nota;
+        for (int i = 0; i < 2; i++) {
+            media += notas[i];
         }
-        return media / notas.length;
+        return media / 2.0;
     }
 
     private String calcularConceito(double media) {
@@ -48,7 +50,7 @@ class Aluno {
         }
     }
 
-    void mostrarDados(){
+    void mostrarDados() {
         System.out.println("RA: " + ra);
         System.out.println("Nome: " + nome);
         System.out.println("Média: " + calcularMedia());
@@ -58,7 +60,8 @@ class Aluno {
 
     public String toString() {
         StringBuilder res = new StringBuilder();
-        res.append(ra).append('|').append(nome).append('|').append(notas[0]).append('|').append(notas[1]).append('|').append(notas[2]);
+        res.append(ra).append('|').append(nome).append('|').append(notas[0]).append('|').append(notas[1]).append('|')
+                .append(notas[2]);
         return res.toString();
     }
 }

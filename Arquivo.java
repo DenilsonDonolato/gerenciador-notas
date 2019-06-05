@@ -9,8 +9,9 @@ import java.util.ArrayList;
 public class Arquivo {
 
     public static final String usuarios = "users.txt";
+    public static final String materias = "materias.txt";
 
-    public void escreverArquivo(String nomeArquivo, String conteudo) {
+    public void escreverArquivo(String nomeArquivo, String conteudo, boolean arquivoTodo) {
 
         try {
             File file = new File(nomeArquivo);
@@ -19,7 +20,7 @@ public class Arquivo {
                 file.createNewFile();
             }
 
-            FileWriter writer = new FileWriter(file.getAbsoluteFile(), true);
+            FileWriter writer = new FileWriter(file.getAbsoluteFile(), !arquivoTodo);
             BufferedWriter bw = new BufferedWriter(writer);
 
             bw.write(conteudo);
@@ -29,12 +30,12 @@ public class Arquivo {
         }
     }
 
-    public void escreverArquivo(String nomeArquivo, String[] conteudo) {
+    public void escreverArquivo(String nomeArquivo, String[] conteudo, boolean arquivoTodo) {
         StringBuilder completa = new StringBuilder();
         for (String texto : conteudo) {
             completa.append(texto).append("|");
         }
-        escreverArquivo(nomeArquivo, completa.deleteCharAt(completa.length() - 1).toString());
+        escreverArquivo(nomeArquivo, completa.deleteCharAt(completa.length() - 1).toString(), !arquivoTodo);
     }
 
     boolean arquivoExiste(String nome) {
@@ -74,7 +75,6 @@ public class Arquivo {
                         }
                     }
                 }
-
             }
             reader.close();
             return 0;
@@ -85,4 +85,52 @@ public class Arquivo {
         return 0;
     }
 
+    public String buscarMateria(String selectedItem) {
+
+        try {
+            FileReader ler = new FileReader(materias);
+            BufferedReader reader = new BufferedReader(ler);
+
+            String linha;
+            String dados[];
+
+            while ((linha = reader.readLine()) != null) {
+                dados = linha.split("\\|");
+                if (selectedItem.equals(dados[0])) {
+                    reader.close();
+                    return dados[1];
+                }
+            }
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
+
+    public Aluno buscarDadosAluno(String nomeArquivo, Aluno aluno) {
+        try {
+            FileReader ler = new FileReader(nomeArquivo);
+            BufferedReader reader = new BufferedReader(ler);
+
+            String linha;
+            String dados[];
+
+            while ((linha = reader.readLine()) != null) {
+                dados = linha.split("\\|");
+                if (aluno.nome.equals(dados[0])) {
+                    aluno.faltas = Integer.parseInt(dados[1]);
+                    aluno.notas[0] = Double.parseDouble(dados[2]);
+                    aluno.notas[1] = Double.parseDouble(dados[3]);
+                    aluno.notas[2] = aluno.calcularMedia();
+                    reader.close();
+                    return aluno;
+                }
+            }
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return aluno;
+    }
 }
