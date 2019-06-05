@@ -1,4 +1,4 @@
-Claudio|1|1|C
+Claudio|1|1|C|Cálculo
 Denilson Donolato|2|2|A|Java|Eng. Software
-Humberto Zanetti|3|3|P
+Humberto Zanetti|3|3|P|Java|Eng. Software
 Isaque Priuli Tavares|4|4|A|Java|Eng. Software|Cálculo

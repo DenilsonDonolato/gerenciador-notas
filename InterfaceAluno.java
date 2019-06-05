@@ -8,7 +8,7 @@ import javax.swing.*;
 public class InterfaceAluno extends JFrame {
 
     private static final long serialVersionUID = 1L;
-    private static final String appName = "Gerenciador de notas";
+    // private static final String appName = "Gerenciador de notas";
     private static final int larguraJanela = 400;
     private static final int alturaJanela = 450;
     Aluno aluno;
@@ -27,7 +27,7 @@ public class InterfaceAluno extends JFrame {
 
     InterfaceAluno(Aluno aluno) {
         setLayout(null);
-        setTitle(appName);
+        // setTitle(appName);
         setSize(larguraJanela, alturaJanela);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setLocation(260, 115);
@@ -35,7 +35,7 @@ public class InterfaceAluno extends JFrame {
         setLocationRelativeTo(null);
 
         this.aluno = aluno;
-
+        setTitle(aluno.nome);
         criaComponentes();
     }
 

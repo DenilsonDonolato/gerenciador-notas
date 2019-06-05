@@ -64,9 +64,9 @@ public class App extends JFrame {
 
             switch (checarTipoUsuario(usuario)) {
             case 1:
-                // InterfaceCoordenador interfaceCoordenador = new InterfaceCoordenador();
+                InterfaceProfessor interfaceProf = new InterfaceProfessor((Professor) usuario);
                 dispose();
-                // interfaceCoordenador.inicializa();
+                interfaceProf.inicializa();
                 break;
 
             case 2:
@@ -76,7 +76,7 @@ public class App extends JFrame {
                 break;
 
             case 3:
-                InterfaceProfessor interfaceProfessor = new InterfaceProfessor();
+                InterfaceProfessor interfaceProfessor = new InterfaceProfessor((Professor) usuario);
                 interfaceProfessor.inicializa();
                 dispose();
                 break;
