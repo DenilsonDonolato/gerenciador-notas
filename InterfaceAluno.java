@@ -90,7 +90,7 @@ public class InterfaceAluno extends JFrame {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                sair();
+                dispose();
             }
         });
 

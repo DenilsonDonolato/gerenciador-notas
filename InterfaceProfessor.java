@@ -91,7 +91,7 @@ public class InterfaceProfessor extends JFrame {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                sair();
+                dispose();
             }
         });
 
@@ -137,7 +137,6 @@ public class InterfaceProfessor extends JFrame {
         App app = new App();
         app.inicializa();
         dispose();
-        //Fim Aluno1
     }
 
     public void inicializa() {
