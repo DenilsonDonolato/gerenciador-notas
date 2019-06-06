@@ -46,7 +46,7 @@ public class InterfaceProfessor extends JFrame {
         lblTittle5.setBounds(400, 10, 200, 30);
         add(lblTittle5);
 
-        // Primeiro Aluno
+        // Aluno
         JLabel txtUsuario1 = new JLabel(" Nome do aluno aqui.");
         txtUsuario1.setBounds(larguraJanela / 2 - 230, 50, 200, 30);
         add(txtUsuario1);
@@ -82,7 +82,7 @@ public class InterfaceProfessor extends JFrame {
         JLabel lblNotaMedia1 = new JLabel("9");
         lblNotaMedia1.setBounds(415, 50, 200, 30);
         add(lblNotaMedia1);
-        // Fim Aluno1
+        // Fim Aluno
 
         JButton btnSair = new JButton("Sair");
         btnSair.setBounds(larguraJanela / 2 - 100, alturaJanela - 100, 200, 50);
