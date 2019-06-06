@@ -8,26 +8,17 @@ class Aluno {
     private String conceito;
     ArrayList<String> materias = new ArrayList<>();
 
-    Aluno(String ra, String nome, double n1, double n2, double n3) {
-        if (ra.length() != 4 || nome.length() > 30 || !validaNota(n1) || !validaNota(n2) || !validaNota(n3)) {
-            throw new IllegalArgumentException("Dados de criação de aluno incorreto");
-        } else {
-            this.ra = ra;
-            this.nome = nome;
-            this.notas[0] = n1;
-            this.notas[1] = n2;
-            this.notas[2] = n3;
-            this.conceito = calcularConceito(calcularMedia());
-        }
+    Aluno(String nome, int falta, double n1, double n2) {
+        this.nome = nome;
+        this.faltas = falta;
+        this.notas[0] = n1;
+        this.notas[1] = n2;
+        this.notas[2] = calcularMedia();
     }
 
     Aluno(String nome, ArrayList<String> materias) {
         this.nome = nome;
         this.materias = materias;
-    }
-
-    private boolean validaNota(double nota) {
-        return nota >= 0 && nota <= 10;
     }
 
     double calcularMedia() {
@@ -36,18 +27,6 @@ class Aluno {
             media += notas[i];
         }
         return media / 2.0;
-    }
-
-    private String calcularConceito(double media) {
-        if (media >= 8.5) {
-            return "Excelente";
-        } else if (media >= 7) {
-            return "Bom";
-        } else if (media >= 5) {
-            return "Regular";
-        } else {
-            return "Preocupante";
-        }
     }
 
     void mostrarDados() {

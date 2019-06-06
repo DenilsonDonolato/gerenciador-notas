@@ -133,4 +133,28 @@ public class Arquivo {
         }
         return aluno;
     }
+
+    public ArrayList<Aluno> buscarDadosTurma(String nomeArquivo) {
+        String materia = buscarMateria(nomeArquivo);
+        ArrayList<Aluno> alunos = new ArrayList<>();
+        Aluno aluno;
+
+        try {
+            FileReader ler = new FileReader(materia);
+            BufferedReader reader = new BufferedReader(ler);
+
+            String linha;
+            String dados[];
+
+            while ((linha = reader.readLine()) != null) {
+                dados = linha.split("\\|");
+                aluno = new Aluno(dados[0], Integer.parseInt(dados[1]), Double.parseDouble(dados[2]), Double.parseDouble(dados[3]));
+                alunos.add(aluno);
+            }
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return alunos;
+    }
 }
