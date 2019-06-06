@@ -94,7 +94,7 @@ public class InterfaceProfessor extends JFrame {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                dispose();
+                salvarDados();
             }
         });
         JButton btnSair = new JButton("Sair");
@@ -144,6 +144,11 @@ public class InterfaceProfessor extends JFrame {
 
             }
         });
+    }
+
+    protected void salvarDados() {
+        Arquivo arquivo = new Arquivo();
+        arquivo.escreverArquivo(arquivo.buscarMateria(cmbMaterias.getSelectedItem().toString()),turma.get(cmbMaterias.getSelectedIndex()).alunos);
     }
 
     public void mudarMateria(int id) {
@@ -278,13 +283,6 @@ public class InterfaceProfessor extends JFrame {
 
                     @Override
                     public void changedUpdate(DocumentEvent e) {
-                        for (int i = 0; i < qtdeMaterias; i++) {
-                            for (int j = 0; j < turma.get(i).alunos.size(); j++) {
-                                if (e.getDocument() == notaP11[i][j].getDocument()) {
-                                    mudarMediaTurmaAluno(i, j);
-                                }
-                            }
-                        }
                     }
                 });
 
@@ -319,16 +317,8 @@ public class InterfaceProfessor extends JFrame {
 
                     @Override
                     public void changedUpdate(DocumentEvent e) {
-                        for (int i = 0; i < qtdeMaterias; i++) {
-                            for (int j = 0; j < turma.get(i).alunos.size(); j++) {
-                                if (e.getDocument() == notaP21[i][j].getDocument()) {
-                                    mudarMediaTurmaAluno(i, j);
-                                }
-                            }
-                        }
                     }
                 });
-
 
                 lblNotaMedia1[i][j] = new JLabel();
                 lblNotaMedia1[i][j].setBounds(415, 85 + espaço, 200, 20);
@@ -341,7 +331,7 @@ public class InterfaceProfessor extends JFrame {
     }
 
     protected void mudarMediaTurmaAluno(int i, int j) {
-        double n0,n1;
+        double n0, n1;
         try {
             n0 = Double.parseDouble(notaP11[i][j].getText());
         } catch (Exception e) {
@@ -352,7 +342,7 @@ public class InterfaceProfessor extends JFrame {
         } catch (Exception e) {
             n1 = 0;
         }
-        
+
         turma.get(i).alunos.get(j).notas[0] = n0;
         turma.get(i).alunos.get(j).notas[1] = n1;
         turma.get(i).alunos.get(j).notas[2] = turma.get(i).alunos.get(j).calcularMedia();

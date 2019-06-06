@@ -37,6 +37,13 @@ public class Arquivo {
         }
         escreverArquivo(nomeArquivo, completa.deleteCharAt(completa.length() - 1).toString(), !arquivoTodo);
     }
+    public void escreverArquivo(String nomeArquivo, ArrayList<Aluno> alunos) {
+        StringBuilder completa = new StringBuilder();
+        for (Aluno aluno : alunos) {
+            completa.append(aluno.nome).append("|").append(aluno.faltas).append("|").append(aluno.notas[0]).append("|").append(aluno.notas[1]).append("\n");
+        }
+        escreverArquivo(nomeArquivo, completa.deleteCharAt(completa.length() - 1).toString(),true);
+    }
 
     boolean arquivoExiste(String nome) {
         File file = new File(nome);
