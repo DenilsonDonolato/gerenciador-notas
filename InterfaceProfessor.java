@@ -146,7 +146,7 @@ public class InterfaceProfessor extends JFrame {
 
     public void mudarMateria(int id) {
         boolean aFlag = false;
-        for (int i = 0; i < professor.materias.size(); i++) {
+        for (int i = 0; i < qtde; i++) {
             for (int j = 0; j < turma.get(i).alunos.size(); j++) {
                 aFlag = (i == id) ? true : false;
                 txtUsuario1[i][j].setVisible(aFlag);
@@ -195,36 +195,43 @@ public class InterfaceProfessor extends JFrame {
 
             for (int j = 0; j < qtdeAlunos; j++) {
                 espaço = j*29;
+                txtUsuario1[i][j] = new JLabel();
                 txtUsuario1[i][j].setBounds(35, 85 + espaço, 200, 20);
                 add(txtUsuario1[i][j]);
                 txtUsuario1[i][j].setText(turma.get(i).alunos.get(j).nome);
                 txtUsuario1[i][j].setVisible(false);
 
+                btnMenos1[i][j] = new JButton();
                 btnMenos1[i][j].setBounds(larguraJanela / 2 - 45, 87 + espaço, 15, 15);
                 add(btnMenos1[i][j]);
                 btnMenos1[i][j].setToolTipText("Diminuir 1 falta");
                 btnMenos1[i][j].setVisible(false);
 
+                lblNumFaltas1[i][j] = new JLabel();
                 lblNumFaltas1[i][j].setBounds(larguraJanela / 2 - 23, 85 + espaço, 30, 20);
                 add(lblNumFaltas1[i][j]);
                 lblNumFaltas1[i][j].setText(String.valueOf(turma.get(i).alunos.get(j).faltas));
                 lblNumFaltas1[i][j].setVisible(false);
 
+                btnMais1[i][j] = new JButton();
                 btnMais1[i][j].setBounds(larguraJanela / 2 - 10, 87 + espaço, 15, 15);
                 add(btnMais1[i][j]);
                 btnMais1[i][j].setToolTipText("Aumentar 1 falta");
                 btnMais1[i][j].setVisible(false);
 
+                notaP11[i][j] = new JTextField();
                 notaP11[i][j].setBounds(295, 85 + espaço, 30, 20);
                 add(notaP11[i][j]);
                 notaP11[i][j].setText(String.valueOf(turma.get(i).alunos.get(j).notas[0]));
                 notaP11[i][j].setVisible(false);
 
+                notaP21[i][j] = new JTextField();
                 notaP21[i][j].setBounds(350, 85 + espaço, 30, 20);
                 add(notaP21[i][j]);
                 notaP21[i][j].setText(String.valueOf(turma.get(i).alunos.get(j).notas[1]));
                 notaP21[i][j].setVisible(false);
 
+                lblNotaMedia1[i][j] = new JLabel();
                 lblNotaMedia1[i][j].setBounds(415, 85 + espaço, 200, 20);
                 add(lblNotaMedia1[i][j]);
                 lblNotaMedia1[i][j].setText(String.valueOf(turma.get(i).alunos.get(j).notas[2]));
