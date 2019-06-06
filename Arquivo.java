@@ -69,9 +69,9 @@ public class Arquivo {
                         case 'A':
                             return new Aluno(nome, materias);
                         case 'P':
-                            return new Professor(nome);
+                            return new Professor(nome,materias);
                         case 'C':
-                            // return new Coordenador(nome);
+                            return new Professor(nome,materias);
                         }
                     }
                 }
