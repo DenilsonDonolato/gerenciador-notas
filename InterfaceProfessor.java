@@ -12,7 +12,7 @@ public class InterfaceProfessor extends JFrame {
     // private static final String appName = "Gerenciador de notas";
     private static final int larguraJanela = 500;
     private static final int alturaJanela = 600;
-    int qtde;
+    int qtdeMaterias;
     JLabel[][] txtUsuario1;
     JButton[][] btnMenos1;
     JLabel[][] lblNumFaltas1;
@@ -146,7 +146,7 @@ public class InterfaceProfessor extends JFrame {
 
     public void mudarMateria(int id) {
         boolean aFlag = false;
-        for (int i = 0; i < qtde; i++) {
+        for (int i = 0; i < qtdeMaterias; i++) {
             for (int j = 0; j < turma.get(i).alunos.size(); j++) {
                 aFlag = (i == id) ? true : false;
                 txtUsuario1[i][j].setVisible(aFlag);
@@ -173,16 +173,16 @@ public class InterfaceProfessor extends JFrame {
     void criaLinhaAluno() {
         int espaço = 0;
         int qtdeAlunos;
-        qtde = professor.materias.size();
-        txtUsuario1 = new JLabel[qtde][];
-        btnMenos1 = new JButton[qtde][];
-        lblNumFaltas1 = new JLabel[qtde][];
-        btnMais1 = new JButton[qtde][];
-        notaP11 = new JTextField[qtde][];
-        notaP21 = new JTextField[qtde][];
-        lblNotaMedia1 = new JLabel[qtde][];
+        qtdeMaterias = professor.materias.size();
+        txtUsuario1 = new JLabel[qtdeMaterias][];
+        btnMenos1 = new JButton[qtdeMaterias][];
+        lblNumFaltas1 = new JLabel[qtdeMaterias][];
+        btnMais1 = new JButton[qtdeMaterias][];
+        notaP11 = new JTextField[qtdeMaterias][];
+        notaP21 = new JTextField[qtdeMaterias][];
+        lblNotaMedia1 = new JLabel[qtdeMaterias][];
 
-        for (int i = 0; i < qtde; i++) {
+        for (int i = 0; i < qtdeMaterias; i++) {
             qtdeAlunos = turma.get(i).alunos.size();
 
             txtUsuario1[i] = new JLabel[qtdeAlunos];
@@ -194,7 +194,7 @@ public class InterfaceProfessor extends JFrame {
             lblNotaMedia1[i] = new JLabel[qtdeAlunos];
 
             for (int j = 0; j < qtdeAlunos; j++) {
-                espaço = j*29;
+                espaço = j * 29;
                 txtUsuario1[i][j] = new JLabel();
                 txtUsuario1[i][j].setBounds(35, 85 + espaço, 200, 20);
                 add(txtUsuario1[i][j]);
@@ -206,6 +206,19 @@ public class InterfaceProfessor extends JFrame {
                 add(btnMenos1[i][j]);
                 btnMenos1[i][j].setToolTipText("Diminuir 1 falta");
                 btnMenos1[i][j].setVisible(false);
+                btnMenos1[i][j].addActionListener(new ActionListener() {
+
+                    @Override
+                    public void actionPerformed(ActionEvent ae) {
+                        for (int i = 0; i < qtdeMaterias; i++) {
+                            for (int j = 0; j < turma.get(i).alunos.size(); j++) {
+                                if (ae.getSource() == btnMenos1[i][j]) {
+                                    diminuirFalta(i, j);
+                                }
+                            }
+                        }
+                    }
+                });
 
                 lblNumFaltas1[i][j] = new JLabel();
                 lblNumFaltas1[i][j].setBounds(larguraJanela / 2 - 23, 85 + espaço, 30, 20);
@@ -218,6 +231,19 @@ public class InterfaceProfessor extends JFrame {
                 add(btnMais1[i][j]);
                 btnMais1[i][j].setToolTipText("Aumentar 1 falta");
                 btnMais1[i][j].setVisible(false);
+                btnMais1[i][j].addActionListener(new ActionListener() {
+
+                    @Override
+                    public void actionPerformed(ActionEvent ae) {
+                        for (int i = 0; i < qtdeMaterias; i++) {
+                            for (int j = 0; j < turma.get(i).alunos.size(); j++) {
+                                if (ae.getSource() == btnMais1[i][j]) {
+                                    aumentarFalta(i, j);
+                                }
+                            }
+                        }
+                    }
+                });
 
                 notaP11[i][j] = new JTextField();
                 notaP11[i][j].setBounds(295, 85 + espaço, 30, 20);
@@ -238,6 +264,18 @@ public class InterfaceProfessor extends JFrame {
                 lblNotaMedia1[i][j].setVisible(false);
             }
             espaço = 0;
+        }
+    }
+
+    protected void aumentarFalta(int i, int j) {
+        turma.get(i).alunos.get(j).faltas++;
+        lblNumFaltas1[i][j].setText(String.valueOf(turma.get(i).alunos.get(j).faltas));
+    }
+
+    protected void diminuirFalta(int i, int j) {
+        if (turma.get(i).alunos.get(j).faltas > 0) {
+            turma.get(i).alunos.get(j).faltas--;
+            lblNumFaltas1[i][j].setText(String.valueOf(turma.get(i).alunos.get(j).faltas));
         }
     }
 }
