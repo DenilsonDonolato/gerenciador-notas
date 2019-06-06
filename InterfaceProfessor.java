@@ -5,6 +5,8 @@ import java.awt.event.WindowListener;
 import java.util.ArrayList;
 
 import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 public class InterfaceProfessor extends JFrame {
 
@@ -250,12 +252,83 @@ public class InterfaceProfessor extends JFrame {
                 add(notaP11[i][j]);
                 notaP11[i][j].setText(String.valueOf(turma.get(i).alunos.get(j).notas[0]));
                 notaP11[i][j].setVisible(false);
+                notaP11[i][j].getDocument().addDocumentListener(new DocumentListener() {
+
+                    @Override
+                    public void removeUpdate(DocumentEvent e) {
+                        for (int i = 0; i < qtdeMaterias; i++) {
+                            for (int j = 0; j < turma.get(i).alunos.size(); j++) {
+                                if (e.getDocument() == notaP11[i][j].getDocument()) {
+                                    mudarMediaTurmaAluno(i, j);
+                                }
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void insertUpdate(DocumentEvent e) {
+                        for (int i = 0; i < qtdeMaterias; i++) {
+                            for (int j = 0; j < turma.get(i).alunos.size(); j++) {
+                                if (e.getDocument() == notaP11[i][j].getDocument()) {
+                                    mudarMediaTurmaAluno(i, j);
+                                }
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void changedUpdate(DocumentEvent e) {
+                        for (int i = 0; i < qtdeMaterias; i++) {
+                            for (int j = 0; j < turma.get(i).alunos.size(); j++) {
+                                if (e.getDocument() == notaP11[i][j].getDocument()) {
+                                    mudarMediaTurmaAluno(i, j);
+                                }
+                            }
+                        }
+                    }
+                });
 
                 notaP21[i][j] = new JTextField();
                 notaP21[i][j].setBounds(350, 85 + espaço, 30, 20);
                 add(notaP21[i][j]);
                 notaP21[i][j].setText(String.valueOf(turma.get(i).alunos.get(j).notas[1]));
                 notaP21[i][j].setVisible(false);
+                notaP21[i][j].getDocument().addDocumentListener(new DocumentListener() {
+
+                    @Override
+                    public void removeUpdate(DocumentEvent e) {
+                        for (int i = 0; i < qtdeMaterias; i++) {
+                            for (int j = 0; j < turma.get(i).alunos.size(); j++) {
+                                if (e.getDocument() == notaP21[i][j].getDocument()) {
+                                    mudarMediaTurmaAluno(i, j);
+                                }
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void insertUpdate(DocumentEvent e) {
+                        for (int i = 0; i < qtdeMaterias; i++) {
+                            for (int j = 0; j < turma.get(i).alunos.size(); j++) {
+                                if (e.getDocument() == notaP21[i][j].getDocument()) {
+                                    mudarMediaTurmaAluno(i, j);
+                                }
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void changedUpdate(DocumentEvent e) {
+                        for (int i = 0; i < qtdeMaterias; i++) {
+                            for (int j = 0; j < turma.get(i).alunos.size(); j++) {
+                                if (e.getDocument() == notaP21[i][j].getDocument()) {
+                                    mudarMediaTurmaAluno(i, j);
+                                }
+                            }
+                        }
+                    }
+                });
+
 
                 lblNotaMedia1[i][j] = new JLabel();
                 lblNotaMedia1[i][j].setBounds(415, 85 + espaço, 200, 20);
@@ -265,6 +338,25 @@ public class InterfaceProfessor extends JFrame {
             }
             espaço = 0;
         }
+    }
+
+    protected void mudarMediaTurmaAluno(int i, int j) {
+        double n0,n1;
+        try {
+            n0 = Double.parseDouble(notaP11[i][j].getText());
+        } catch (Exception e) {
+            n0 = 0;
+        }
+        try {
+            n1 = Double.parseDouble(notaP21[i][j].getText());
+        } catch (Exception e) {
+            n1 = 0;
+        }
+        
+        turma.get(i).alunos.get(j).notas[0] = n0;
+        turma.get(i).alunos.get(j).notas[1] = n1;
+        turma.get(i).alunos.get(j).notas[2] = turma.get(i).alunos.get(j).calcularMedia();
+        lblNotaMedia1[i][j].setText(String.valueOf(turma.get(i).alunos.get(j).notas[2]));
     }
 
     protected void aumentarFalta(int i, int j) {
